@@ -56,13 +56,8 @@ app.use(hpp())
 
 app.use(express.static(path.join(__dirname, 'public')))
 
-app.use('/', (req, res) => {
-    res.send('Hello, I\'m back')
-})
-
 const versionOne = (routeName) => `/api/v1/${routeName}`
-
-//app.use(`/api/v1/auth`, authRoutes)
+app.use(versionOne('auth'), authRoutes)
 
 app.use(errorHandler)
 
