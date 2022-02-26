@@ -21,6 +21,7 @@ dotenv.config({ path: './config/.env' })
 DBConnection()
 
 const authRoutes = require('./routes/auth')
+const postRoutes = require('./routes/post')
 
 const app = express()
 
@@ -58,6 +59,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 const versionOne = (routeName) => `/api/v1/${routeName}`
 app.use(versionOne('auth'), authRoutes)
+app.use(versionOne('post'), postRoutes)
 
 app.use(errorHandler)
 
